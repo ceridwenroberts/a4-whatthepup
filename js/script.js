@@ -128,7 +128,7 @@ $(function () {
           infoModal.showModal();
           $("#imgBox").attr("src", this.imgThumb);
           $(".breedName").html("<h3>" + this.breedName + "</h3>");
-          console.log(this.breedName);
+          // console.log(this.breedName);
           $(".breedDescription").html(this.breedDescription);
           $(".breedType").html("<span>Breed type: </span>" + this.breedType);
           $(".origin").html("<span>Origin:</span> " + this.origin);
@@ -186,30 +186,82 @@ $(function () {
   
           $.each(breedTypes, function (index, value) {
             let buttonName = this;
-  
-            let breedClassSelector = "." + this.replace(/\s+/g, "");
+
+            let breedNameTag = this.replace(/\s+/g, "");
+            let breedClassSelectorClass = "." + this.replace(/\s+/g, "");
+            let dataValue = $(this).data(breedNameTag);
+            console.log(breedNameTag);
+
+            
+      
             $("<button class='filterBtn'>" + this + "</button>")
-              .addClass(this.val)
+            .data("filter", breedNameTag)
+              // .addClass(this.val)
               .appendTo(".filterContainer")
               .on("click", function (breedTypes) {
                 $(this).toggleClass("active");
-                $(breedClassSelector).toggleClass("hidden"); 
-                $('.fetchBtn').prop("disabled", false);              
+                // $(breedClassSelectorClass).toggleClass("hidden"); 
+                $('.fetchBtn').prop("disabled", false);
+                
+                
+                console.log("value: " + dataValue);
+                // var filter = $(this).data()
+                console.log("breedNameTag: " + breedNameTag);
               });
+              
           });
   
           $(".filterBtn").eq(-1).addClass("mixedHybridBtn");
           $(".filterBtn").eq(-2).addClass("mixedHybridBtn");
 
-          $("<button class='filterBtn'>All</button>")
-          .addClass("all")
-          .appendTo(".filterContainer")
-          .on("click", function (breedTypes) {
-            $(this).toggleClass("active");
-            $(".filterBtn").addClass("active"); 
-            // $('.fetchBtn').prop("disabled", false);  
-            // $(breedClassSelector).toggleClass("hidden");  
-            $(".breedBox").find("*").show();
+          //All button
+            $("<button class='filterBtn'>All</button>")
+            .data("filter", "all")
+            .addClass("all")
+            .appendTo(".filterContainer")
+
+
+          $(".filterBtn").on("click", function() {
+            var filter = $(this).data("filter");
+            if (filter === "all") {
+              $(".breedBox").find("*").show();
+            } else {
+              $(".breedBox").find("*").not("." + filter).hide();
+              console.log(filter);
+              $("." + filter).show();
+            }
           });
           
+
+
+
+
+
+  }
+  function draftAllSort() {
+    $("<button class='filterBtn'>All</button>")
+  .addClass("all")
+  .appendTo(".filterContainer")
+  .on("click", function (breedTypes) {
+    $(this).toggleClass("active");
+    $(".filterBtn").addClass("active"); 
+    // $('.fetchBtn').prop("disabled", false);  
+    // $(breedClassSelector).toggleClass("hidden");  
+    $(".breedBox").find("*").show();
+  });
+  }
+
+
+  function sortFromChat() {
+
+      $("button").click(function() {
+        var filter = $(this).data("filter");
+        if (filter === "all") {
+          $(".item").show();
+        } else {
+          $(".item").not("." + filter).hide();
+          $("." + filter).show();
+        }
+      });
+   
   }
