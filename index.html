@@ -9,19 +9,48 @@
     <link rel="stylesheet" href="styles/typography.css">
     <link rel="stylesheet" href="styles/main.css">
     <script src="js/jquery-3.6.3.js"></script>
-    <script src="js/script.js" defer></script>  
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
     <header>
         <h1>What the <strong>pup</strong>?!</h1>
-        <h5 class="intro">Pure? Criss-cross? Not sure? Frind out. </p>
+        <div class="subhead">
+            <div class="text-container">
+                <div class="intro">Pure? Criss-cross? Not sure? Frind out.</div>
+            </div>
+            <div class="button-container">
+                <button class="fetchBtn bone">
+                    <div class="c1"></div>
+                    <div class="c2"></div>
+                    <div class="c3"></div>
+                    <div class="c4"></div>
+                    <div class="b1">
+                        <div class="b2">
+                            Go fetch!
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="button-container">
+                <button class="factBtn bone">
+                    <div class="c1"></div>
+                    <div class="c2"></div>
+                    <div class="c3"></div>
+                    <div class="c4"></div>
+                    <div class="b1">
+                        <div class="b2">
+
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
     </header>
     <main>
         <div class="serachContainer">
             <div class="filterContainer">
             </div>
-            <button class="fetchBtn">Go fetch!</button>
         </div>
         <dialog id="infoModal">
             <div><img src="" alt="" id="imgBox"></div>
@@ -34,6 +63,12 @@
             <p class="weight key"></p>
             <p class="lifeSpan key"></p>
             <button id="closeInfoModal">Close</button>
+        </dialog>
+        <dialog id="factModal">
+            <h3 id="factHead">Essential Dog Fact</h3>
+            <div id="fact-btn-container">
+                <button id="factClose" class="factClose">close</button>
+            </div>
         </dialog>
         <div class="wrapper">
             <!-- <div class="placeholder"><img src="images/MrHappyFace-400x400-1.jpeg"></div>
