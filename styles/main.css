@@ -79,8 +79,6 @@ header {
   padding-bottom: 1rem;
 }
 
-
-
 main {
   display: flex;
   flex-direction: column;
@@ -239,39 +237,39 @@ button {
   aspect-ratio: 1/1;
   background-color: var(--c-btn-fetch-background);
   border-radius: 50%;
-  color: #000
-  padding-top: 2em;
+  color: #000 padding-top: 2em;
 }
 
 
-  
-  .searchBtn:disabled {
- 
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-  
-  .fiterBtn:hover {
-    opacity: 80%;
-  }
-  
-  /* .filterBtn:active {
+
+.searchBtn:disabled {
+
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.fiterBtn:hover {
+  opacity: 80%;
+}
+
+/* .filterBtn:active {
     color: #5a4c0ac6;
     border: 2px solid black
   } */
-  
-  .filterBtn:focus {
-    outline-color: transparent;
-    outline-style: solid;
-  }
- 
-  
-  button.active {
-    background-color: #37E8FC;;
-    color: #fff;
-  }
-  
- /* button:hover {
+
+.filterBtn:focus {
+  outline-color: transparent;
+  outline-style: solid;
+}
+
+
+button.active {
+  background-color: #37E8FC;
+  ;
+  color: #fff;
+}
+
+/* button:hover {
     opacity: 60%;
   }
 
@@ -427,7 +425,7 @@ button {
 .mixedHybridBtn.active {
   background-color: #32d1e3;
   color: #fff;
-} 
+}
 
 
 @media (width <=900px) {
@@ -476,7 +474,7 @@ button {
     text-align: center;
     display: block;
     min-width: 200px;
-    
+
   }
 
 }

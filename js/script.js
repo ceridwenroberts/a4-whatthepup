@@ -1,58 +1,52 @@
 $(function () {
-
   getFact();
   $factModal = "#factModal";
-  $("#factBtn").on("click", function() {
+  $("#factBtn").on("click", function () {
     console.log("clicked");
     $factModal.showModal();
-  })
+  });
 
-function getFact() {
-  const optionsFacts = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '074d0d51f3msha1ec7833e172563p1a1f31jsne8f36279c7e2',
-      'X-RapidAPI-Host': 'dog-facts2.p.rapidapi.com'
-    }
-  };
-  
-  fetch('https://dog-facts2.p.rapidapi.com/fas', optionsFacts)
-    .then((response) => {
-      if (!response.ok) {
-        // let errorImgMess = $('<img src="images/tripping-dachshound.jpeg"></img><p>Something went wrong! Have another go.');
-        // errorImgMess.appendTo(".searchContainer");
-        let factErrMess = $("<p>Someone droped the ball on this. Please, try again!</p>");
-        factErrMess.appendTo("#fact-btn-container");
+  function getFact() {
+    const optionsFacts = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "074d0d51f3msha1ec7833e172563p1a1f31jsne8f36279c7e2",
+        "X-RapidAPI-Host": "dog-facts2.p.rapidapi.com",
+      },
+    };
 
-        switch (response.status) {
-          case 400:
-            throw new Error(`Bad request. status: ${response.status}`);
-          case 401:
-            throw new Error(`Unauthorized. status: ${response.status}`);
-          case 403:
-            throw new Error(`Forbidden. status: ${response.status}`);
-          case 404:
-            throw new Error(`Not found. status: ${response.status}`);
-          default:
-            throw new Error(`HTTP error! status: ${response.status}`);
-      }   
-      } else {
-        return response.json();
-      }
-    })
-    .then(data => {
-      let fact = data.facts;
-      console.log(fact);
+    fetch("https://dog-facts2.p.rapidapi.com/facts", optionsFacts)
+      .then((response) => {
+        if (!response.ok) {
+          let factErrMess = $(
+            "<p>Someone droped the ball on this. Please, try again!</p>"
+          );
+          factErrMess.appendTo("#fact-btn-container");
 
+          switch (response.status) {
+            case 400:
+              throw new Error(`Bad request. status: ${response.status}`);
+            case 401:
+              throw new Error(`Unauthorized. status: ${response.status}`);
+            case 403:
+              throw new Error(`Forbidden. status: ${response.status}`);
+            case 404:
+              throw new Error(`Not found. status: ${response.status}`);
+            default:
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        let fact = data.facts;
+        console.log(fact);
 
-      $("<p>" + fact + "</p>").appendTo("#factHead");
-
-      // console.log(response)
-    }
-    )
-    .catch(err => console.error(err));
-}
-
+        $("<p>" + fact + "</p>").appendTo("#factHead");
+      })
+      .catch((err) => console.error(err));
+  }
 
   console.log("responsive-image-grid.js");
   let breedTypes = [];
@@ -61,23 +55,17 @@ function getFact() {
   $(".wrapper").hide();
   $(".fetchBtn").on("click", function () {
     $(".wrapper").show();
-    $(this,).hide();
+    $(this).hide();
     $(".subhead").hide();
     $("h1").css("padding", "1vw");
-
   });
-
-  // // filterBtns(breedTypes);
 
   $(".fetchBtn").on("click", function () {
     getFromDogBreedDbAll();
   });
 
-  console.log(breedTypes);
-
   function getFromDogBreedDbAll() {
     const options = {
-      //flytta upp på sidan – convention?
       method: "GET",
       headers: {
         "X-RapidAPI-Key": "074d0d51f3msha1ec7833e172563p1a1f31jsne8f36279c7e2",
@@ -87,9 +75,24 @@ function getFact() {
 
     fetch("https://dogbreeddb.p.rapidapi.com/", options)
       .then((response) => {
-        // console.log(response.statusText); // returns "OK" if the response returned successfully
         if (!response.ok) {
-          throw new Error(response.statusText);
+          let dogsErrMess = $(
+            "<img src='./images/tripping-dachshound.jpeg' alt='dachshound tripping'><p>Something went wrong. Please, try agian!</p>"
+          );
+          dogsErrMess.appendTo(".filterContainer");
+
+          switch (response.status) {
+            case 400:
+              throw new Error(`Bad request. status: ${response.status}`);
+            case 401:
+              throw new Error(`Unauthorized. status: ${response.status}`);
+            case 403:
+              throw new Error(`Forbidden. status: ${response.status}`);
+            case 404:
+              throw new Error(`Not found. status: ${response.status}`);
+            default:
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
         } else {
           return response.json();
         }
@@ -122,21 +125,6 @@ function getFact() {
   $(".filterBtn").on("click", function () {
     console.log("clicked " + this.breedName + " button");
   });
-
-  // function getFromDogBreedDbBedlington() {
-  //   fetch("https://dogbreeddb.p.rapidapi.com/?id=52", options)
-  //     .then((response) => response.json()) //<---- ARROW FUNCTION: "=> response.json()"  "let x = response.json()""
-  //     // .then(dataTut => console.log(dataTut)) //<----  see comment further down
-  //     .then((data) => {
-  //       console.log(data);
-  //       // $("h2").text(data[0].breedName);
-  //       // console.log(data[0].breedName);
-  //       // works:
-  //       $("img").attr("src", data[0].imgThumb);
-  //       $(".placeholder").css("border", "solid 2px green");
-  //     })
-  //     .catch((err) => console.error(err));
-  // }
 
   function firstBig(dogs) {
     $.each(dogs, function (index, value) {
@@ -229,11 +217,6 @@ function getFact() {
         });
     });
   }
-
-  
-
-
-
 }); //ready
 
 function filterBtns(breedTypes, dogs) {
@@ -294,7 +277,6 @@ function filterBtns(breedTypes, dogs) {
   });
 }
 
-
 function draftAllSort() {
   $("<button class='filterBtn'>All</button>")
     .addClass("all")
@@ -308,7 +290,7 @@ function draftAllSort() {
     });
 }
 
-function sortFromChat() {
+function sortFilterBtns() {
   $("button").click(function () {
     var filter = $(this).data("filter");
     if (filter === "all") {
