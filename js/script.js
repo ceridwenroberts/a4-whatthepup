@@ -1,6 +1,11 @@
 $(function () {
 
   getFact();
+  $factModal = "#factModal";
+  $("#factBtn").on("click", function() {
+    console.log("clicked");
+    $factModal.showModal();
+  })
 
 function getFact() {
   const optionsFacts = {
@@ -14,8 +19,20 @@ function getFact() {
   fetch('https://dog-facts2.p.rapidapi.com/facts', optionsFacts)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(response.statusText);
-      } else {
+        let errorImg = $('<img src="images/tripping-dachshound.jpeg"></img>');
+        errorImg.appendTo(".searchContainer");
+        switch (response.status) {
+          case 400:
+            throw new Error('Bad request');
+          case 401:
+            throw new Error('Unauthorized');
+          case 403:
+            throw new Error('Forbidden');
+          case 404:
+            throw new Error('Not found');
+          default:
+            throw new Error(`HTTP error! status: ${response.status}`);
+      } 
         return response.json();
       }
     })

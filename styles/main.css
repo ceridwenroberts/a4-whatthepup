@@ -72,10 +72,11 @@ header {
 
 
 .intro {
-  font-size: 1.20vh;
+  font-size: .875rem;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+  padding-bottom: 1rem;
 }
 
 
@@ -152,10 +153,6 @@ footer {
   display: none;
 }
 
-/* 
-  .firstSort {
-    display: none;
-  } */
 
 dialog {
   background-color: var(--c-base);
@@ -199,7 +196,7 @@ dialog {
 }
 
 #factClose {
- 
+
   aspect-ratio: 1;
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -243,11 +240,10 @@ button {
   background-color: var(--c-btn-fetch-background);
   border-radius: 50%;
   color: #000
+  padding-top: 2em;
 }
 
-/* button:hover {
-    opacity: 60%;
-  }
+
   
   .searchBtn:disabled {
  
@@ -259,81 +255,27 @@ button {
     opacity: 80%;
   }
   
-  .filterBtn:active {
+  /* .filterBtn:active {
     color: #5a4c0ac6;
     border: 2px solid black
-  }
+  } */
   
   .filterBtn:focus {
     outline-color: transparent;
     outline-style: solid;
   }
+ 
   
   button.active {
     background-color: #37E8FC;;
     color: #fff;
   }
   
-  .mixedHybridBtn {
-    color: #2dbccc;
-  }
-  
-  .mixedHybridBtn.active {
-    background-color: #32d1e3;
-  
-  } */
-
-@media (width <=900px) {
-  .breedBox {
-    max-width: calc(100% / 3);
-    font-size: calc(12px + 1.5vw);
+ /* button:hover {
+    opacity: 60%;
   }
 
-  .breedNameThumbText {
-    font-size: calc(12px + 1.5vw);
-  }
-
-}
-
-@media (width <=500px) {
-  .breedBox {
-    font-size: calc(12px + 1.5vw);
-    max-width: 50%;
-  }
-
-
-
-  .subhead {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .text-container {
-    display: flex;
-
-    flex-wrap: wrap;
-    padding-right: 1em;
-    
-  }
-  
-  .button-container {
-    display: block;
-   
-  }
-  
-  .breedDescription {
-    font-size: 1em;
-  }
-  
-  .intro {
-    font-size: 1.20vh;
-    text-align: center;
-    display: block;
-    min-width: 200px;
-  }
-  
-}
-
+/* 
 .bone {
   margin: 20px;
   position: relative;
@@ -397,7 +339,7 @@ button {
   border-bottom: 2px solid black;
   text-align: center;
 
-}
+} */
 
 #factClose,
 .filterBtn {
@@ -433,7 +375,7 @@ button {
     position: relative; */
 }
 
-.filterBtn:before,
+/* .filterBtn:before,
 .filterBtn:after {
   content: "";
   position: absolute;
@@ -442,11 +384,12 @@ button {
   clip-path: polygon(0 0, 100% 0, calc(100% + 200vmax) 200vmax, 200vmax calc(100% + 200vmax), 0 100%);
   box-shadow: 0 0 0 200vmax var(--color);
   filter: brightness(1.1);
-}
+} */
 
 .filterBtn:after {
   inset: 0 0 0 auto;
   filter: brightness(0.9);
+  -webkit-filter: brightness(0.9);
 }
 
 .filterBtn:hover,
@@ -465,4 +408,75 @@ button {
   --c: #0005;
   transform: translate(4px, 4px);
   transition: none;
+}
+
+.factFooter {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 10px;
+}
+
+.factFooter p {
+  padding: none;
+}
+
+.mixedHybridBtn {
+  color: #2dbccc;
+}
+
+.mixedHybridBtn.active {
+  background-color: #32d1e3;
+  color: #fff;
+} 
+
+
+@media (width <=900px) {
+  .breedBox {
+    max-width: calc(100% / 3);
+    font-size: calc(12px + 1.5vw);
+  }
+
+  .breedNameThumbText {
+    font-size: calc(12px + 1.5vw);
+  }
+
+}
+
+@media (width <=500px) {
+  .breedBox {
+    font-size: calc(12px + 1.5vw);
+    max-width: 50%;
+  }
+
+  .subhead {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding-right: 1em; */
+    justify-content: center;
+
+
+  }
+
+  .button-container {
+    display: block;
+
+  }
+
+  .breedDescription {
+    font-size: 1em;
+  }
+
+  .intro {
+    font-size: 1.20vh;
+    text-align: center;
+    display: block;
+    min-width: 200px;
+    
+  }
+
 }
