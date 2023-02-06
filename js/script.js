@@ -16,23 +16,27 @@ function getFact() {
     }
   };
   
-  fetch('https://dog-facts2.p.rapidapi.com/facts', optionsFacts)
+  fetch('https://dog-facts2.p.rapidapi.com/fas', optionsFacts)
     .then((response) => {
       if (!response.ok) {
-        let errorImg = $('<img src="images/tripping-dachshound.jpeg"></img>');
-        errorImg.appendTo(".searchContainer");
+        // let errorImgMess = $('<img src="images/tripping-dachshound.jpeg"></img><p>Something went wrong! Have another go.');
+        // errorImgMess.appendTo(".searchContainer");
+        let factErrMess = $("<p>Someone droped the ball on this. Please, try again!</p>");
+        factErrMess.appendTo("#fact-btn-container");
+
         switch (response.status) {
           case 400:
-            throw new Error('Bad request');
+            throw new Error(`Bad request. status: ${response.status}`);
           case 401:
-            throw new Error('Unauthorized');
+            throw new Error(`Unauthorized. status: ${response.status}`);
           case 403:
-            throw new Error('Forbidden');
+            throw new Error(`Forbidden. status: ${response.status}`);
           case 404:
-            throw new Error('Not found');
+            throw new Error(`Not found. status: ${response.status}`);
           default:
             throw new Error(`HTTP error! status: ${response.status}`);
-      } 
+      }   
+      } else {
         return response.json();
       }
     })
