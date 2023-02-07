@@ -1,0 +1,220 @@
+:root {
+  --c-base: #fcf9f0;
+  --c-box-shaddow-primary: #6b4d36;
+  --border: .2rem;
+  --c-btn-primary: #5962a6;
+  --c-btn-secondary: #474f85d0;
+  --c-btn-dark: #474f85;
+  --c-btn-shaddow: #ccc3a4;
+  --c-footer-color: #ccc3a4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  height: 100vh;
+  background-color: var(--c-base);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial;
+  margin: 0 auto;
+  max-width: 1140px;
+  min-height: 100vh;
+}
+
+header {
+  padding-bottom: 1vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.subhead {
+  display: flex;
+  justify-content: center;
+}
+
+.text-container {
+  display: table;
+  padding-right: 1em;
+}
+
+.button-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.intro {
+  font-size: .875rem;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+h1 {
+  text-shadow: #fcf9f0 1px 0 20px;
+}
+
+.wrapper {
+  box-shadow: 1px -1px 6vh 1px var(--c-box-shaddow-primary);
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.placeholder {
+  background-color: aquamarine;
+  max-width: 25%;
+  outline: 1px #8b4513;
+  padding: 8px;
+}
+
+img {
+  width: 100%;
+}
+
+.breedBox {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  max-width: 25%;
+  position: relative;
+}
+
+.breedNameThumb {
+    color: #fff;
+    font-size: 2vw;
+    font-weight: 600;
+    padding: 0.5rem;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    text-shadow: 0 0 15px #173b3b;
+  }
+  
+  .breedNameThumbText {
+    font-size: 100%;
+  }
+  
+  footer {
+    color: var(--c-footer-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 8px;
+    font-weight: 100;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  dialog {
+    background-color: var(--c-base);
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    max-width: 80ch;
+    padding: 2em;
+    box-shadow: 1px -1px 6vh 1px var(--c-box-shadow-primary);
+  }
+  
+  #factModal::backdrop,
+  #infoModal::backdrop {
+    background: linear-gradient(45deg, #ffc0cb, #000000, #173b3b);
+    opacity: 0.3;
+  }
+  
+  .key > span {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .breedDescription {
+    font-size: 1.1rem;
+    font-style: italic;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  
+  #factModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #factModal p {
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    color: black;
+    padding-top: 2em;
+  }
+  
+  #factClose {
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .searchContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3%;
+  }
+  
+  .filterContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 4vw;
+  }
+  
+  button {
+    background-color: var(--c-btn-background);
+    border-radius: 3%;
+    border: transparent;
+    color: var(--c-base);
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    margin: 0.5rem;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  #closeInfoModal {
+    background-color: var(--c-btn-primary);
+  }
+  
+  .filterBtn:focus {
+    outline-style: solid;
+    outline-color: transparent;
+  }
+  
+  #factClose,
+  .filterBtn {
+    font-size
+  

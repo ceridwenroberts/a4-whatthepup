@@ -3,12 +3,11 @@
 * {
     font-family: Poppins', sans-serif';
 }
+
 html {
     font-size: 100%;
     
 }
-
-/*16px*/
 
 body {
     background: white;
@@ -38,10 +37,6 @@ h1 {
     font-size: 8vw;
     color: #D88C9A;
     padding: 1em;
-}
-
-h1 > strong {
-
 }
 
 h2 {

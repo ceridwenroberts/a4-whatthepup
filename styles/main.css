@@ -46,7 +46,6 @@ header {
 .subhead {
   display: flex;
   justify-content: center;
-
 }
 
 .text-container {
@@ -75,7 +74,7 @@ main {
 }
 
 h1 {
-  text-shadow:  #fcf9f0 1px 0 20px;
+  text-shadow: #fcf9f0 1px 0 20px;
 }
 
 .wrapper {
@@ -138,16 +137,20 @@ footer {
 dialog {
   background-color: var(--c-base);
   border: none;
+  box-shadow: 1px -1px 6vh 1px var(--c-box-shaddow-primary);
   font-family: 'Poppins', arial;
   max-width: 80ch;
   padding: 2em;
-  box-shadow: 1px -1px 6vh 1px var(--c-box-shaddow-primary);
 }
 
 #factModal::backdrop,
 #infoModal::backdrop {
   background: linear-gradient(45deg, #ffc0cb, #000000, #173b3b);
   opacity: .3;
+}
+
+#factHead h5 {
+  text-align: center;
 }
 
 .key>span {
@@ -163,17 +166,17 @@ dialog {
 }
 
 #factModal {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 #factModal p {
+  color: black;
   font-size: .9rem;
   font-style: italic;
-  text-align: center;
-  color: black;
   padding-top: 2em;
+  text-align: center;
 }
 
 #factClose {
@@ -226,25 +229,22 @@ button {
 
 #factClose,
 .filterBtn {
-  font-size: .8rem;
-  padding: 0.25em 1.2em;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  color: var(--c-btn-primary);
-  box-shadow:
-    0 0 0 200px inset var(--c, #0000),
-    0 0 0 var(--border) inset var(--c-btn-primary),
-    1px -1px 6vh 1px var(--c-btn-secondary);
   background: #fff linear-gradient(var(--c-btn-primary) 0 0) bottom/100% 0% no-repeat;
-  transition: color var(--t, 0.3s), background-size 0.3s;
+  border: none;
+  box-shadow: 0 0 0 200px inset var(--c, #0000), 0 0 0 var(--border) inset var(--c-btn-primary), 1px -1px 6vh 1px var(--c-btn-secondary);
+  color: var(--c-btn-primary);
+  cursor: pointer;
+  font-size: .8rem;
+  font-weight: bold;
+  padding: 0.25em 1.2em;
   position: relative;
+  transition: color var(--t, 0.3s), background-size 0.3s;
 }
 
 .filterBtn:after {
-  inset: 0 0 0 auto;
-  filter: brightness(0.9);
   -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+  inset: 0 0 0 auto;
 }
 
 .filterBtn:hover,
@@ -272,6 +272,12 @@ button {
   transition: none;
 }
 
+.active {
+  background-color: var(--c-btn-primary);
+  color: #fff;
+}
+
+
 .fetchBtn {
   aspect-ratio: 1/1;
   background-color: var(--c-btn-primary);
@@ -280,45 +286,71 @@ button {
 }
 
 .fetchBtn {
-  width:140px;
-  height:140px;
-  border-radius:100%;
-  animation: bounce 1s;
-  transform: translateY(0px);
   animation-iteration-count: infinite;
-  margin:50px;
+  animation: bounce 1s;
+  border-radius: 100%;
+  height: 140px;
+  margin: 50px;
+  transform: translateY(0px);
+  width: 140px;
 }
 
 .factFooter {
+  font-size: 10px;
   padding-left: 3rem;
   padding-right: 3rem;
-  font-size: 10px;
 }
 
 .factFooter p {
   padding: none;
 }
 
+.errContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.errContainer img {
+  box-shadow: 1px -1px 6vh 1px var(--c-box-shaddow-primary);
+  justify-self: center;
+  max-width: 600px;
+}
+
+
 @keyframes bounce {
-	0% {top: 0;
-		-webkit-animation-timing-function: ease-in;
-	}
-	40% {}
-	50% {top: 140px;
-		height: 140px;
-		-webkit-animation-timing-function: ease-out;
-	}
-	55% {top: 160px; height: 120px; 
-		-webkit-animation-timing-function: ease-in;}
-	65% {top: 120px; height: 140px; 
-		-webkit-animation-timing-function: ease-out;}
-	95% {
-		top: 0;		
-		-webkit-animation-timing-function: ease-in;
-	}
-	100% {top: 0;
-		-webkit-animation-timing-function: ease-in;
-	}
+  0% {
+    top: 0;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  50% {
+    top: 140px;
+    height: 140px;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  55% {
+    top: 160px;
+    height: 120px;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  65% {
+    top: 120px;
+    height: 140px;
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  95% {
+    top: 0;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  100% {
+    top: 0;
+    -webkit-animation-timing-function: ease-in;
+  }
 }
 
 
@@ -347,7 +379,6 @@ button {
   .text-container {
     display: flex;
     flex-wrap: wrap;
-    /* padding-right: 1em; */
     justify-content: center;
   }
 

@@ -2,7 +2,6 @@ $(function () {
   getFact();
   $factModal = "#factModal";
   $("#factBtn").on("click", function () {
-    console.log("clicked");
     $factModal.showModal();
   });
 
@@ -19,9 +18,9 @@ $(function () {
       .then((response) => {
         if (!response.ok) {
           let factErrMess = $(
-            "<p>Someone droped the ball on this. Please, try again!</p>"
+            "<div class=errContainer><p>Something went very wrong. Please try again.</p><img src='images/MrHappyFace-400x400-1.jpeg' alt='World's ugliest dog looking like himself'><div>"
           );
-          factErrMess.appendTo("#fact-btn-container");
+          factErrMess.appendTo("#factHead");
 
           switch (response.status) {
             case 400:
@@ -41,14 +40,17 @@ $(function () {
       })
       .then((data) => {
         let fact = data.facts;
-        console.log(fact);
 
         $("<p>" + fact + "</p>").appendTo("#factHead");
       })
-      .catch((err) => console.error(err));
+      .catch((error) => {
+        $(".errContainer").append(error);
+
+        console.error(error);
+        console.error(`${error.name}: ${error.message}`);
+      });
   }
 
-  console.log("responsive-image-grid.js");
   let breedTypes = [];
   let thisBreedType = [];
 
@@ -58,6 +60,7 @@ $(function () {
     $(this).hide();
     $(".subhead").hide();
     $("h1").css("padding", "1vw");
+    $();
   });
 
   $(".fetchBtn").on("click", function () {
@@ -77,9 +80,9 @@ $(function () {
       .then((response) => {
         if (!response.ok) {
           let dogsErrMess = $(
-            "<img src='./images/tripping-dachshound.jpeg' alt='dachshound tripping'><p>Something went wrong. Please, try agian!</p>"
+            "<div class=errContainer><p>Someone droped the ball on this. Please, try again!</p><img src='./images/tripping-dachshound.jpeg' alt='dachshound tripping'><div>"
           );
-          dogsErrMess.appendTo(".filterContainer");
+          dogsErrMess.appendTo("header");
 
           switch (response.status) {
             case 400:
@@ -98,12 +101,12 @@ $(function () {
         }
       })
       .then((dogs) => {
-        //****PRE-FILTER ALL WITHOUT PHOTO */
+        //PRE-FILTER ALL WITHOUT PHOTO
         let noPhotoSubstr = "dogbreed/dog-default";
         dogs = dogs.filter((dogs) => {
           return String(dogs.imgThumb).includes(noPhotoSubstr) === false;
         });
-        //****PRE-FILTER DUPLICATE */
+        //PRE-FILTER DUPLICATE
         dogs = dogs.filter((dogs) => {
           return dogs.id !== 248;
         });
@@ -112,24 +115,16 @@ $(function () {
         filterBtns(breedTypes);
       })
       .catch((error) => {
-        $("main")
-          .append("<div class='error'>")
-          .text("Something went wrong: " + error);
+        $(".errContainer").append(error);
 
         console.error(error);
-        console.log("test ", error);
         console.error(`${error.name}: ${error.message}`);
-      }); //DEVELOP!!!
-  } //fn getFromBreedDbAll
-
-  $(".filterBtn").on("click", function () {
-    console.log("clicked " + this.breedName + " button");
-  });
+      });
+  }
 
   function firstBig(dogs) {
     $.each(dogs, function (index, value) {
-      //****LIST OF BREED TYPES */
-      // console.log(`${index}: ${value}`);
+      //LIST OF BREED TYPES
       thisBreedType = this.breedType.toLowerCase();
 
       let breedExists = breedTypes.includes(thisBreedType);
@@ -138,8 +133,7 @@ $(function () {
       }
       let breedClassName = thisBreedType.replace(/\s+/g, "");
 
-      //****IMAGE GRID */
-
+      //IMAGE GRID
       const $breedBox = $(
         "<div class='breedBox  " + breedClassName + "'></div>"
       );
@@ -173,9 +167,9 @@ $(function () {
         infoModal.showModal();
         $("#imgBox").attr({
           src: this.imgThumb,
-          alt: "image of a " + this.breedName});
+          alt: "image of a " + this.breedName,
+        });
         $(".breedName").html("<h3>" + this.breedName + "</h3>");
-        // console.log(this.breedName);
         $(".breedDescription").html(this.breedDescription);
         $(".breedType").html("<span>Breed type: </span>" + this.breedType);
         $(".origin").html("<span>Origin:</span> " + this.origin);
@@ -208,25 +202,13 @@ $(function () {
       });
 
       $(".wrapper").append($breedBox);
-
-      //****INFOBOX */
-      // $("<div class='infoBox'></div>")
-      //   .appendTo("breedBox")
-      //   .text(function (dogs) {
-      //     $.each(value, function (key, value) {
-      //       return key, value;
-      //     });
-      //   });
     });
   }
-}); //ready
+});
 
 function filterBtns(breedTypes, dogs) {
   const findMixed = breedTypes.findIndex((el) => el == "mixed breed dogs");
-  console.log(findMixed);
   let newBreedTypes = breedTypes.push(breedTypes.splice(4, 1)[0]);
-  console.log(newBreedTypes);
-  console.log(breedTypes);
 
   $.each(breedTypes, function (index, value) {
     let buttonName = this;
@@ -234,31 +216,19 @@ function filterBtns(breedTypes, dogs) {
     let breedNameTag = this.replace(/\s+/g, "");
     let breedClassSelectorClass = "." + this.replace(/\s+/g, "");
     let dataValue = $(this).data(breedNameTag);
-    console.log(breedNameTag);
-
-    // $("<button class='bone filterBtn' role='button'><div class='c1'></div><div class='c2'></div><div class='c3'></div><div class='c4'></div><div class='b1'><div class='b2'>" + this + "</div></div></button>")
 
     $("<button class='filterBtn' role='button'>" + this + "</button>")
       .data("filter", breedNameTag)
-      // .addClass(this.val)
       .appendTo(".filterContainer")
       .on("click", function (breedTypes) {
-        // $(this).toggleClass("active");
-        // $(breedClassSelectorClass).toggleClass("hidden");
         $(".fetchBtn").prop("disabled", false);
-
-      
-        console.log("value: " + dataValue);
-        // var filter = $(this).data()
-        console.log("breedNameTag: " + breedNameTag);
       });
   });
 
   $(".filterBtn").eq(-1).addClass("mixedHybridBtn");
   $(".filterBtn").eq(-2).addClass("mixedHybridBtn");
 
-  //All button
-  $("<button class='filterBtn' role='button'>All</button>")
+  $("<button class='filterBtn active' id='allBtn' role='button'>All</button>")
     .data("filter", "all")
     .addClass("all")
     .appendTo(".filterContainer");
@@ -274,23 +244,9 @@ function filterBtns(breedTypes, dogs) {
         .find("*")
         .not("." + filter)
         .hide();
-      console.log(filter);
       $("." + filter).show();
     }
   });
-}
-
-function draftAllSort() {
-  $("<button class='filterBtn'>All</button>")
-    .addClass("all")
-    .appendTo(".filterContainer")
-    .on("click", function (breedTypes) {
-      $(this).toggleClass("active");
-      $(".filterBtn").addClass("active");
-      // $('.fetchBtn').prop("disabled", false);
-      // $(breedClassSelector).toggleClass("hidden");
-      $(".breedBox").find("*").show();
-    });
 }
 
 function sortFilterBtns() {
