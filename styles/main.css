@@ -286,6 +286,7 @@ button {
 }
 
 .fetchBtn {
+  animation-name: bounce;
   animation-iteration-count: infinite;
   animation: bounce 1s;
   border-radius: 100%;
