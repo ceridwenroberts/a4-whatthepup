@@ -171,7 +171,9 @@ $(function () {
 
       $breedBox.on("click", (event) => {
         infoModal.showModal();
-        $("#imgBox").attr("src", this.imgThumb);
+        $("#imgBox").attr({
+          src: this.imgThumb,
+          alt: "image of a " + this.breedName});
         $(".breedName").html("<h3>" + this.breedName + "</h3>");
         // console.log(this.breedName);
         $(".breedDescription").html(this.breedDescription);
@@ -208,13 +210,13 @@ $(function () {
       $(".wrapper").append($breedBox);
 
       //****INFOBOX */
-      $("<div class='infoBox'></div>")
-        .appendTo("breedBox")
-        .text(function (dogs) {
-          $.each(value, function (key, value) {
-            return key, value;
-          });
-        });
+      // $("<div class='infoBox'></div>")
+      //   .appendTo("breedBox")
+      //   .text(function (dogs) {
+      //     $.each(value, function (key, value) {
+      //       return key, value;
+      //     });
+      //   });
     });
   }
 }); //ready
@@ -245,6 +247,7 @@ function filterBtns(breedTypes, dogs) {
         // $(breedClassSelectorClass).toggleClass("hidden");
         $(".fetchBtn").prop("disabled", false);
 
+      
         console.log("value: " + dataValue);
         // var filter = $(this).data()
         console.log("breedNameTag: " + breedNameTag);
