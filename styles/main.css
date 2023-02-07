@@ -370,7 +370,6 @@ button {
 @media (width <=500px) {
   .breedBox {
     font-size: calc(12px + 1.5vw);
-    max-width: 50%;
   }
 
   .subhead {
