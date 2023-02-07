@@ -285,16 +285,7 @@ button {
   color: var(--c-btn-primary);
 }
 
-.fetchBtn {
-  animation-name: bounce;
-  animation-iteration-count: infinite;
-  animation: bounce 1s;
-  border-radius: 100%;
-  height: 140px;
-  margin: 50px;
-  transform: translateY(0px);
-  width: 140px;
-}
+
 
 .factFooter {
   font-size: 10px;
@@ -318,6 +309,16 @@ button {
   max-width: 600px;
 }
 
+.fetchBtn {
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation: bounce 1s;
+  border-radius: 100%;
+  height: 140px;
+  margin: 50px;
+  transform: translateY(0px);
+  width: 140px;
+}
 
 @keyframes bounce {
   0% {
