@@ -164,6 +164,7 @@ $(function () {
       $closeInfoModal = "#closeInfoModal";
 
       $breedBox.on("click", (event) => {
+        console.log(88);
         infoModal.showModal();
         $("#imgBox").attr({
           src: this.imgThumb,
