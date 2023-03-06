@@ -1,4 +1,3 @@
-hjk
 Assignment 4 - Webpage connecting to an API
 Due 27 January 2023 23:59
 Instructions
